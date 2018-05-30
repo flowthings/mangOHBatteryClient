@@ -59,7 +59,6 @@ COMPONENT_INIT
     uint16_t percentremaining;
     uint16_t energyremaining;
     double currentvoltage, currenttemp;
-    bool present;
 
     le_result_t result =
         ma_battery_GetTechnology(batteryType, sizeof(batteryType), &mAh, &voltage);
@@ -104,9 +103,6 @@ COMPONENT_INIT
     {
         LE_INFO(" current energy = %d", energyremaining);
     }
-
-    present = ma_battery_Present();
-    LE_INFO("Present or not %d", present);
 
     ma_battery_AddLevelPercentageHandler(80, 90, percentageHandler, (void *)0xdeadbeef);
 
